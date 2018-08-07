@@ -8,9 +8,6 @@ import {
   TextInput,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-
-import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -66,29 +63,15 @@ export default class HomeScreen extends React.Component {
             accessibilityLabel="Login"
             />
         </View>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
-          </Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.navigationFilename]}
-          >
-            <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
-            </MonoText>
-          </View>
-        </View>
       </View>
     );
   }
 
   onPressLogin = () => {
-    this.setState({ authenticated: true })
+    //   Attempt to authenticate
+    // this.setState({ authenticated: true })
+    this.props.navigation.navigate('Links');
   }
-
-
 }
 
 const styles = StyleSheet.create({
@@ -108,7 +91,7 @@ const styles = StyleSheet.create({
   },
   welcomeContainer: {
     alignItems: "center",
-    marginTop: 10,
+    marginTop: 30,
     marginBottom: 20
   },
   welcomeImage: {
