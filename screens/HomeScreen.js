@@ -70,7 +70,7 @@ export default class HomeScreen extends React.Component {
   onPressLogin = () => {
     //   Attempt to authenticate
     // this.setState({ authenticated: true })
-    this.props.navigation.navigate('Links');
+    this.props.navigation.navigate('Visits');
   }
 }
 
