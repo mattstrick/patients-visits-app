@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import { VisitList } from '../components/VisitList';
 
 export default class VisitsScreen extends React.Component {
   static navigationOptions = {
@@ -14,7 +15,7 @@ export default class VisitsScreen extends React.Component {
         </View> 
         <View style={styles.visitsContainer}>
             <Text>Visits</Text>
-            <Text> MM/DD/YYYY - Dr. Name  $XX.XX  </Text>
+            <VisitList/>
         </View>     
       </ScrollView>
     );
