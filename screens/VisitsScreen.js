@@ -1,5 +1,11 @@
 import React from 'react';
-import { ScrollView, View, StyleSheet, Text } from 'react-native';
+import { 
+    Button, 
+    ScrollView, 
+    View, 
+    StyleSheet,
+    Text 
+} from 'react-native';
 import { VisitList } from '../components/VisitList';
 
 export default class VisitsScreen extends React.Component {
@@ -7,12 +13,21 @@ export default class VisitsScreen extends React.Component {
     title: 'Visits',
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.welcomeContainer}>
             <Text>Hi, [UserName]</Text>
         </View> 
+        <Button
+            onPress={ () => this.props.navigation.navigate('Messages') }
+            title="Message Center"
+            color="#841584"
+            />
         <View style={styles.visitsContainer}>
             <Text>Visits</Text>
             <VisitList/>

@@ -7,6 +7,7 @@ import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import VisitsScreen from '../screens/VisitsScreen';
+import MessagesScreen from '../screens/MessagesScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -32,6 +33,24 @@ const VisitsStack = createStackNavigator({
 
   VisitsStack.navigationOptions = {
     tabBarLabel: 'Visits',
+    tabBarIcon: ({ focused }) => (
+      <TabBarIcon
+        focused={focused}
+        name={
+          Platform.OS === 'ios'
+            ? `ios-information-circle${focused ? '' : '-outline'}`
+            : 'md-information-circle'
+        }
+      />
+    ),
+  };
+
+  const MessagesStack = createStackNavigator({
+    Messages: MessagesScreen,
+  });
+
+  MessagesStack.navigationOptions = {
+    tabBarLabel: 'Messages',
     tabBarIcon: ({ focused }) => (
       <TabBarIcon
         focused={focused}
@@ -76,5 +95,6 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   SettingsStack,
-  VisitsStack
+  VisitsStack,
+  MessagesStack
 });
