@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { AsyncStorage, Text, View, Alert } from 'react-native';
 
 const a = [
     {

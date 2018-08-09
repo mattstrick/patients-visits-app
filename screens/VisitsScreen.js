@@ -1,9 +1,11 @@
 import React from 'react';
 import { 
-    Button, 
+    Alert,
+    AsyncStorage,
+    Button,
     ScrollView, 
     View, 
-    StyleSheet,
+    StyleSheet, 
     Text 
 } from 'react-native';
 import { VisitList } from '../components/VisitList';
@@ -13,8 +15,21 @@ export default class VisitsScreen extends React.Component {
     title: 'Visits',
   };
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this._retrieveData();
+}
+
+_retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('userToken');
+      if (value !== null) {
+        // We have data!!
+        Alert.alert(value);
+      }
+     } catch (error) {
+       // Error retrieving data
+     }
   }
 
   render() {

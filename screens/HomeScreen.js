@@ -6,7 +6,9 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  Alert, 
+  AsyncStorage
 } from "react-native";
 
 export default class HomeScreen extends React.Component {
@@ -44,7 +46,6 @@ export default class HomeScreen extends React.Component {
         </View>
 
         <View style={styles.loginContainer}>
-          <Text>Login</Text>
           <TextInput
             style={styles.textInput}
             onChangeText={username => this.setState({ username })}
@@ -62,14 +63,18 @@ export default class HomeScreen extends React.Component {
             color="#841584"
             accessibilityLabel="Login"
             />
+            <Text>Or</Text>
+            <Button title="Signup" color="#841584" onPress={() => {
+                Alert.alert('You tapped the button!');
+              }}></Button>
         </View>
       </View>
     );
   }
 
-  onPressLogin = () => {
+  onPressLogin = async () => {
     //   Attempt to authenticate
-    // this.setState({ authenticated: true })
+    await AsyncStorage.setItem('userToken', 'abc');
     this.props.navigation.navigate('Visits');
   }
 }
@@ -78,13 +83,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center"
   },
   contentContainer: {
     paddingTop: 30
