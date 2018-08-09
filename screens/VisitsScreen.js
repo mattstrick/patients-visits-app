@@ -15,9 +15,12 @@ export default class VisitsScreen extends React.Component {
     title: 'Visits',
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this._retrieveData();
+    this.state = {
+        userName: ""
+    };
 }
 
 _retrieveData = async () => {
@@ -25,7 +28,8 @@ _retrieveData = async () => {
       const value = await AsyncStorage.getItem('userToken');
       if (value !== null) {
         // We have data!!
-        Alert.alert(value);
+        
+        this.setState({userName: value})
       }
      } catch (error) {
        // Error retrieving data
@@ -36,7 +40,7 @@ _retrieveData = async () => {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.welcomeContainer}>
-            <Text>Hi, [UserName]</Text>
+            <Text>Hi, {this.state.userName}</Text>
         </View> 
         <Button
             onPress={ () => this.props.navigation.navigate('Messages') }
