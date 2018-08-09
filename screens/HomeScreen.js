@@ -30,11 +30,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
           <Image
-            source={
-              this.state.authenticated
-                ? require("../assets/images/robot-dev.png")
-                : require("../assets/images/robot-prod.png")
-            }
+            source={require("../assets/images/robot-dev.png")}
             style={styles.welcomeImage}
           />
         </View>
@@ -75,7 +71,9 @@ export default class HomeScreen extends React.Component {
   onPressLogin = async () => {
     //   Attempt to authenticate
     await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('Visits');
+    this.props.navigation.navigate('Visits', {
+        userName: this.state.username
+    });
   }
 }
 

@@ -40,7 +40,7 @@ _retrieveData = async () => {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.welcomeContainer}>
-            <Text>Hi, {this.state.userName}</Text>
+            <Text>Hi, {this.props.navigation.getParam('userName', '')}</Text>
         </View> 
         <Button
             onPress={ () => this.props.navigation.navigate('Messages') }
